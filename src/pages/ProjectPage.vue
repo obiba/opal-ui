@@ -20,6 +20,10 @@ const projectsStore = useProjectsStore();
 const project = computed(() => projectsStore.project);
 
 onMounted(() => {
-  projectsStore.getProject(route.params.id);
+  const name = route.params.id as string;
+  if (projectsStore.project.name === name) {
+    return;
+  }
+  projectsStore.getProject(name);
 });
 </script>

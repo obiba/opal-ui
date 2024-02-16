@@ -63,6 +63,7 @@ const columns = [
     align: 'left',
     field: 'name',
     format: (val: string) => val,
+    sortable: true,
   },
   {
     name: 'title',
@@ -89,8 +90,7 @@ function init() {
   });
 }
 
-function onRowClick(evt: any, row: any) {
-  debugger;
+function onRowClick(evt: unknown, row: { name: string }) {
   projectsStore.getProject(row.name).then(() => {
     router.push(`/project/${row.name}`);
   });
